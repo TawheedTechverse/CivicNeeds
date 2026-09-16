@@ -16,10 +16,15 @@ down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
-user_role = postgresql.ENUM("citizen", "authority", name="user_role")
-report_category = postgresql.ENUM("pothole", "lighting", "waste", "flooding", "other", name="report_category")
-report_priority = postgresql.ENUM("low", "medium", "high", "critical", name="report_priority")
-report_status = postgresql.ENUM("open", "in_progress", "resolved", name="report_status")
+# create_type=False: the type is created/dropped explicitly below, so the
+# CREATE TYPE that create_table would otherwise fire for an enum column
+# doesn't run a second time and collide with it.
+user_role = postgresql.ENUM("citizen", "authority", name="user_role", create_type=False)
+report_category = postgresql.ENUM(
+    "pothole", "lighting", "waste", "flooding", "other", name="report_category", create_type=False
+)
+report_priority = postgresql.ENUM("low", "medium", "high", "critical", name="report_priority", create_type=False)
+report_status = postgresql.ENUM("open", "in_progress", "resolved", name="report_status", create_type=False)
 
 
 def upgrade() -> None:
