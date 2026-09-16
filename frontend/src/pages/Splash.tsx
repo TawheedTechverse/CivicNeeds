@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../components/Logo";
+import { playTickSound } from "../utils/sound";
 
 const TOTAL_DURATION_MS = 1900;
 
@@ -9,6 +10,7 @@ export function Splash() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    playTickSound();
     const timer = setTimeout(() => navigate("/login", { replace: true }), TOTAL_DURATION_MS);
     return () => clearTimeout(timer);
   }, [navigate]);
