@@ -11,27 +11,57 @@ interface PickupListing {
 
 const FOOD_PICKUPS: PickupListing[] = [
   {
-    title: "Community Pantry — surplus bread & produce",
-    time: "Today, 4:00 PM – 6:00 PM",
-    location: "Parramatta Community Centre, 123 Church St",
+    title: "Harvest Kitchen",
+    time: "Today, 8:30 PM – 9:00 PM",
+    location: "George St, Sydney CBD",
   },
   {
-    title: "Weekend Grocery Giveaway",
-    time: "Saturday, 10:00 AM – 12:00 PM",
-    location: "Bankstown Uniting Church, 45 Rickard Rd",
+    title: "Bella Trattoria",
+    time: "Today, 9:00 PM – 9:30 PM",
+    location: "King St, Newtown",
+  },
+  {
+    title: "Golden Wok Chinese Restaurant",
+    time: "Tonight, 9:30 PM – 10:00 PM",
+    location: "The Boulevarde, Strathfield",
+  },
+  {
+    title: "Baker's Corner Bakery",
+    time: "Tomorrow, 6:00 PM – 6:30 PM",
+    location: "Oxford St, Paddington",
+  },
+  {
+    title: "Spice Route Indian Cuisine",
+    time: "Friday, 9:00 PM – 9:30 PM",
+    location: "Church St, Parramatta",
   },
 ];
 
 const CLOTHES_PICKUPS: PickupListing[] = [
   {
-    title: "Winter Coats & Jackets Drive",
-    time: "Friday, 9:00 AM – 1:00 PM",
+    title: "Men's Winter Jackets",
+    time: "Saturday, 10:00 AM – 12:00 PM",
     location: "Liverpool Neighbourhood Centre, 12 Speed St",
   },
   {
-    title: "Kids Clothing Swap",
-    time: "Sunday, 11:00 AM – 3:00 PM",
+    title: "Women's Formal Wear",
+    time: "Sunday, 11:00 AM – 1:00 PM",
+    location: "Bankstown Community Hall, 45 Rickard Rd",
+  },
+  {
+    title: "Kids' School Uniforms",
+    time: "Friday, 3:00 PM – 5:00 PM",
     location: "Blacktown Showground Hall, 2 Reservoir Rd",
+  },
+  {
+    title: "Assorted T-Shirts & Casual Wear",
+    time: "Saturday, 1:00 PM – 3:00 PM",
+    location: "Parramatta Community Centre, 123 Church St",
+  },
+  {
+    title: "Baby & Toddler Clothes",
+    time: "Sunday, 9:00 AM – 11:00 AM",
+    location: "Penrith Community Centre, 601 High St",
   },
 ];
 
