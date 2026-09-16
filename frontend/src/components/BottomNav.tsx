@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Map, LayoutDashboard, Plus, User } from "lucide-react";
+import { Gift, Map, LayoutDashboard, Plus, User } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 
 const MotionNavLink = motion(NavLink);
@@ -7,6 +7,7 @@ const MotionNavLink = motion(NavLink);
 const NAV_ITEMS = [
   { to: "/map", label: "Map", icon: Map },
   { to: "/report/new", label: "Report", icon: Plus },
+  { to: "/donations", label: "Donations", icon: Gift },
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/profile", label: "Profile", icon: User },
 ];
@@ -15,7 +16,7 @@ export function BottomNav() {
   const location = useLocation();
 
   return (
-    <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[2000] w-[min(92vw,26rem)]">
+    <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[2000] w-[min(95vw,32rem)]">
       <div className="relative flex items-center justify-between gap-1 rounded-full px-3 py-2 bg-white/30 dark:bg-white/[0.06] backdrop-blur-2xl border border-white/50 dark:border-white/10 shadow-nav">
         <div className="pointer-events-none absolute inset-0 rounded-full overflow-hidden bg-gradient-to-br from-white/40 via-transparent to-sage-200/20 dark:to-sage-400/5" />
 

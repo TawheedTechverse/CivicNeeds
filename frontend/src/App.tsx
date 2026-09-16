@@ -4,6 +4,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import { useAuth } from "./context/AuthContext";
 import { AuthPage } from "./pages/AuthPage";
 import { Dashboard } from "./pages/Dashboard";
+import { Donations } from "./pages/Donations";
 import { MapView } from "./pages/MapView";
 import { Profile } from "./pages/Profile";
 import { ReportForm } from "./pages/ReportForm";
@@ -36,6 +37,14 @@ export default function App() {
           element={
             <ProtectedRoute>
               <ReportForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/donations"
+          element={
+            <ProtectedRoute>
+              <Donations />
             </ProtectedRoute>
           }
         />
