@@ -1,5 +1,6 @@
 import { Clock, MapPin, Shirt, UtensilsCrossed } from "lucide-react";
 import { GlassCard } from "../components/GlassCard";
+import { NotifyDonorButton } from "../components/NotifyDonorButton";
 import { ThemeToggle } from "../components/ThemeToggle";
 
 interface PickupListing {
@@ -36,16 +37,19 @@ const CLOTHES_PICKUPS: PickupListing[] = [
 
 function PickupCard({ listing }: { listing: PickupListing }) {
   return (
-    <GlassCard className="flex flex-col gap-2">
-      <h3 className="font-medium">{listing.title}</h3>
-      <div className="flex items-center gap-2 text-sm text-charcoal-900/60 dark:text-sage-50/60">
-        <Clock size={16} />
-        <span>{listing.time}</span>
+    <GlassCard className="flex items-center justify-between gap-4">
+      <div className="flex flex-col gap-2">
+        <h3 className="font-medium">{listing.title}</h3>
+        <div className="flex items-center gap-2 text-sm text-charcoal-900/60 dark:text-sage-50/60">
+          <Clock size={16} />
+          <span>{listing.time}</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm text-charcoal-900/60 dark:text-sage-50/60">
+          <MapPin size={16} />
+          <span>{listing.location}</span>
+        </div>
       </div>
-      <div className="flex items-center gap-2 text-sm text-charcoal-900/60 dark:text-sage-50/60">
-        <MapPin size={16} />
-        <span>{listing.location}</span>
-      </div>
+      <NotifyDonorButton />
     </GlassCard>
   );
 }
