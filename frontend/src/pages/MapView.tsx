@@ -5,7 +5,8 @@ import { CATEGORY_MAP_COLORS, CategoryBadge, PriorityBadge, StatusBadge } from "
 import { ThemeToggle } from "../components/ThemeToggle";
 import type { Report, ReportCategory, ReportStatus } from "../types";
 
-const DEFAULT_CENTER: [number, number] = [40.7128, -74.006];
+// Sydney, NSW — the default map center for this deployment.
+const DEFAULT_CENTER: [number, number] = [-33.8688, 151.2093];
 
 export function MapView() {
   const [reports, setReports] = useState<Report[]>([]);
@@ -25,7 +26,7 @@ export function MapView() {
 
   return (
     <div className="relative h-screen w-screen">
-      <MapContainer center={DEFAULT_CENTER} zoom={13} style={{ height: "100%", width: "100%" }}>
+      <MapContainer center={DEFAULT_CENTER} zoom={11} style={{ height: "100%", width: "100%" }}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

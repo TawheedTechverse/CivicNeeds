@@ -28,7 +28,11 @@ function ClickHandler({ onChange }: { onChange: (coords: { lat: number; lng: num
   return null;
 }
 
-export function LocationPicker({ value, onChange, defaultCenter = { lat: 40.7128, lng: -74.006 } }: LocationPickerProps) {
+export function LocationPicker({
+  value,
+  onChange,
+  defaultCenter = { lat: -33.8688, lng: 151.2093 }, // Sydney, NSW
+}: LocationPickerProps) {
   const center = value ?? defaultCenter;
 
   const useMyLocation = () => {
