@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { getErrorMessage } from "../api/client";
 import { GlassCard } from "../components/GlassCard";
 import { Logo } from "../components/Logo";
 import { ThemeToggle } from "../components/ThemeToggle";
@@ -24,8 +25,8 @@ export function Register() {
     try {
       await register(email, password, fullName, role);
       navigate("/map");
-    } catch {
-      setError("Could not create account. That email may already be registered.");
+    } catch (err) {
+      setError(getErrorMessage(err, "Could not create account. That email may already be registered."));
     } finally {
       setIsSubmitting(false);
     }

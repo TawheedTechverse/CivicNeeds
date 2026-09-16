@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { getErrorMessage } from "../api/client";
 import { GlassCard } from "../components/GlassCard";
 import { Logo } from "../components/Logo";
 import { ThemeToggle } from "../components/ThemeToggle";
@@ -21,8 +22,8 @@ export function Login() {
     try {
       await login(email, password);
       navigate("/map");
-    } catch {
-      setError("Invalid email or password.");
+    } catch (err) {
+      setError(getErrorMessage(err, "Invalid email or password."));
     } finally {
       setIsSubmitting(false);
     }
