@@ -21,3 +21,5 @@ services:
         value: gemini-3-flash
       - key: CORS_ORIGINS
         value: http://localhost:5173
+      - key: CORS_ORIGIN_REGEX
+        value: https://civicneeds.*\.vercel\.app
