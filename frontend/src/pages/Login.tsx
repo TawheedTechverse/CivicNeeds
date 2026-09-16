@@ -7,6 +7,9 @@ import { Logo } from "../components/Logo";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { useAuth } from "../context/AuthContext";
 
+const DEMO_EMAIL = "capstone6@gmail.com";
+const DEMO_PASSWORD = "capstone@1929";
+
 export function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -15,12 +18,11 @@ export function Login() {
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  const performLogin = async (loginEmail: string, loginPassword: string) => {
     setError(null);
     setIsSubmitting(true);
     try {
-      await login(email, password);
+      await login(loginEmail, loginPassword);
       navigate("/map");
     } catch (err) {
       setError(getErrorMessage(err, "Invalid email or password."));
@@ -28,6 +30,13 @@ export function Login() {
       setIsSubmitting(false);
     }
   };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    performLogin(email, password);
+  };
+
+  const handleDemoLogin = () => performLogin(DEMO_EMAIL, DEMO_PASSWORD);
 
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
@@ -83,6 +92,15 @@ export function Login() {
 
             <button type="submit" disabled={isSubmitting} className="btn-primary mt-2">
               {isSubmitting ? "Signing in..." : "Sign in"}
+            </button>
+
+            <button
+              type="button"
+              onClick={handleDemoLogin}
+              disabled={isSubmitting}
+              className="btn-secondary"
+            >
+              Continue with demo account
             </button>
           </form>
         </GlassCard>
