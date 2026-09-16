@@ -100,16 +100,22 @@ alembic upgrade head
 
 ## Deploying the backend to Render
 
-`render.yaml` at the repo root is a Render "Blueprint" that provisions a free Postgres database
-and a Docker web service for the backend together:
+`render.yaml` at the repo root is a Render "Blueprint" for the backend's Docker web service. It
+does **not** provision a database — Render's free plan only allows one free Postgres database per
+account, so this project expects you to bring your own free Postgres from a provider like
+[Neon](https://neon.tech) or [Supabase](https://supabase.com) instead:
 
-1. Push this repo to GitHub.
-2. In the Render dashboard: **New > Blueprint**, connect the repo, and Render will read
+1. Create a free Postgres database at Neon or Supabase and copy its connection string.
+2. Push this repo to GitHub.
+3. In the Render dashboard: **New > Blueprint**, connect the repo, and Render will read
    `render.yaml` automatically.
-3. When prompted, paste your `GEMINI_API_KEY` (it's marked `sync: false` in the blueprint so
-   Render asks for it interactively rather than storing it in the repo). `JWT_SECRET` and
-   `DATABASE_URL` are generated/wired automatically.
-4. Once deployed, Render gives you a URL like `https://civicneeds-backend.onrender.com`. Set that
+4. When prompted for env vars, paste in:
+   - `DATABASE_URL` — the connection string from step 1, with `postgresql://` changed to
+     `postgresql+psycopg2://` (keep everything else, including `?sslmode=require`)
+   - `GEMINI_API_KEY` — your Gemini key
+
+   `JWT_SECRET` is generated automatically by the blueprint.
+5. Once deployed, Render gives you a URL like `https://civicneeds-backend.onrender.com`. Set that
    as `VITE_API_BASE_URL` in `frontend/.env` to point the local frontend at the hosted backend, and
    add the frontend's own origin (e.g. `http://localhost:5173`) to the backend's `CORS_ORIGINS` env
    var in the Render dashboard if it isn't already there.
