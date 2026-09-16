@@ -2,11 +2,10 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { BottomNav } from "./components/BottomNav";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { useAuth } from "./context/AuthContext";
+import { AuthPage } from "./pages/AuthPage";
 import { Dashboard } from "./pages/Dashboard";
-import { Login } from "./pages/Login";
 import { MapView } from "./pages/MapView";
 import { Profile } from "./pages/Profile";
-import { Register } from "./pages/Register";
 import { ReportForm } from "./pages/ReportForm";
 import { Splash } from "./pages/Splash";
 
@@ -21,8 +20,8 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" element={<Splash />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<AuthPage mode="login" />} />
+        <Route path="/register" element={<AuthPage mode="register" />} />
 
         <Route
           path="/map"
